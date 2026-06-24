@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba55d7196a1e99745b31973fc1f933c6, type: 3}
+  m_Name: Input config
+  m_EditorClassIdentifier: Assembly-CSharp::InputConfig
+  keyboardY: 0
+  keyboardX: 0
+  lerpedKeyboardY: 0
+  lerpedkeyboardX: 0
+  shoulderSide: 0
+  takeInputs: 1
+  yaw: 30.90001
+  lerpedYaw: 30.737608
+  pitch: -34.399994
+  mouseSensitivity: 2
+  aimDamping: 8
+  cameraFarsight: 50
+  recoilOffset: {x: 0, y: 0, z: 0.3}
