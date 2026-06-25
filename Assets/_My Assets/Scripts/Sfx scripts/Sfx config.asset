@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6f963f8d5ee2f7449fe2365b8e68ab7, type: 3}
+  m_Name: Sfx config
+  m_EditorClassIdentifier: Assembly-CSharp::SfxConfig
+  footsteps:
+  - {fileID: 8300000, guid: 2e6400f0bc78e99459fdb699fa9bd935, type: 3}
+  - {fileID: 8300000, guid: 943de9b2aea223e4aa0d66a285aa958e, type: 3}
+  - {fileID: 8300000, guid: 75133e6a5017f7944a515bd32a027dcc, type: 3}
+  pistolGunshots:
+  - {fileID: 8300000, guid: 0187e800e0fad344591b11529fd49ac8, type: 3}
+  - {fileID: 8300000, guid: d977f9eb2875bf84eb2c01b7893ff515, type: 3}
+  - {fileID: 8300000, guid: d641cf26165549e4bbc2788a46b4a11d, type: 3}
+  - {fileID: 8300000, guid: 7f2901be384dc0b46b688c6f776e76ea, type: 3}

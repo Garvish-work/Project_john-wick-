@@ -33,12 +33,16 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         MovePlayer();
+        CheckForFootSteps();
     }
 
     private void MovePlayer()
     {
+        float yVelocity = 0;    
         Vector3 movementVector = (transform.forward * inputConfig.keyboardY) + (transform.right * inputConfig.keyboardX);
-        rb.linearVelocity = movementVector.normalized * playerSpeed;
+        movementVector = movementVector.normalized;
+        yVelocity = rb.linearVelocity.y;
+        rb.linearVelocity = movementVector * playerSpeed + transform.up * yVelocity;
         playerAnimator.SetFloat("MoveY", inputConfig.lerpedKeyboardY);
         playerAnimator.SetFloat("MoveX", inputConfig.lerpedkeyboardX);
     }
@@ -46,5 +50,17 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerPressed(bool check)
     {
         if (check) equippedWeapon.Shoot();
+    }
+
+    float lastFootstep = 0;
+    private void CheckForFootSteps()
+    {
+        float footstep = playerAnimator.GetFloat("Footstep");
+        if (lastFootstep > 0.5f && footstep < 0.5f || lastFootstep < 0.5f && footstep > 0.5f)
+        {
+            Debug.Log("Play footstep sound");
+            SfxActions.PlayerSfx?.Invoke(SfxType.FOOTSETPS);
+        }
+        lastFootstep = footstep;
     }
 }
