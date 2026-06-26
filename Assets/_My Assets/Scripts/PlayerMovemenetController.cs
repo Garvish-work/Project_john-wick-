@@ -47,8 +47,12 @@ public class PlayerMovementController : MonoBehaviour
 
     public void UpdatePlayerSpeed()
     {
-        if (inputConfig.isAiming) playerSpeed = playerConfig.playerAimSpeed;
-        else playerSpeed = playerConfig.playerNormalSpeed;
+        if (inputConfig.isSprinting)playerSpeed = playerConfig.playerSprintingSpeed;
+        else
+        {
+            if (inputConfig.isAiming) playerSpeed = playerConfig.playerAimSpeed;
+            else playerSpeed = playerConfig.playerNormalSpeed;
+        }
     }
 
     float lastFootstep = 0;

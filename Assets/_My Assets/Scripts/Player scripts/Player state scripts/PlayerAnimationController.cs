@@ -16,4 +16,9 @@ public class PlayerAnimationController : MonoBehaviour
     {
         playerAnimator.SetBool("isAiming", check);
     }
+
+    public void ChangeSprinteState(bool check)
+    {
+        playerAnimator.SetBool("isSprinting", check);
+    }
 }

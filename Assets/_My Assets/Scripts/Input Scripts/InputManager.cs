@@ -33,6 +33,17 @@ public class InputManager : MonoBehaviour
         inputConfig.keyboardX = Input.GetAxisRaw("Horizontal");
         inputConfig.lerpedkeyboardX = Mathf.MoveTowards(inputConfig.lerpedkeyboardX, inputConfig.keyboardX, 5 * Time.deltaTime);
 
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (!inputConfig.canShoot)
+            {
+                if (inputConfig.keyboardX == 0 && inputConfig.keyboardY == 1)
+                {
+                    inputConfig.isSprinting = !inputConfig.isSprinting;        
+                }
+            }
+        }
+
         if (inputConfig.keyboardY != 0 || inputConfig.keyboardX != 0) inputConfig.isMoving = true;
         else inputConfig.isMoving = false;
 
@@ -48,13 +59,11 @@ public class InputManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            inputConfig.isAiming = true;
-        }
-        else if (Input.GetKeyUp(KeyCode.Mouse1))
-        {
-            inputConfig.isAiming = false;
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                inputConfig.isAiming = !inputConfig.isAiming;
+            }
         }
     }
 

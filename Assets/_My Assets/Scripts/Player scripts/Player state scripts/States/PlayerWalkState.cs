@@ -23,6 +23,13 @@ public class PlayerWalkState : PlayerBaseState
         cameraController.CameraHandling();
         cameraController.UpdateShoulderSide();
 
+        if (inputConfig.isSprinting)
+        {
+            nextState = new PlayerSprintingState(inputConfig, playerMovementController, playerAnimationController, cameraController);
+            Exit();
+            return;
+        }
+
         if (!inputConfig.isMoving)
         {
             if (inputConfig.isAiming)

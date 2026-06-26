@@ -7,4 +7,5 @@ public class PlayerConfig : ScriptableObject
     public bool isHoldingTrigger = false;
     public float playerAimSpeed = 3;
     public float playerNormalSpeed = 4;
+    public float playerSprintingSpeed = 7;
 }

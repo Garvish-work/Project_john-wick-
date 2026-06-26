@@ -7,6 +7,7 @@ public class InputConfig : ScriptableObject
     public float keyboardY;
     public float keyboardX;
     public bool isMoving = false;
+    public bool isSprinting = false;
 
     [Space]
     public float lerpedKeyboardY;
