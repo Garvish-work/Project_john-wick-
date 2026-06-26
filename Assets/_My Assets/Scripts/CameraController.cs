@@ -35,12 +35,10 @@ public class CameraController: MonoBehaviour
     }
     private void Update()
     {
-        CameraHandling();
         SetAim();
-        UpdateShoulderSide();
     }
 
-    private void CameraHandling()
+    public void CameraHandling()
     {
         characterModel.rotation = Quaternion.Euler(0, inputConfig.lerpedYaw, 0);
         cameraYaw.rotation = Quaternion.Euler(0, inputConfig.yaw, 0);
@@ -75,7 +73,7 @@ public class CameraController: MonoBehaviour
         }
     }
 
-    private void UpdateShoulderSide()
+    public void UpdateShoulderSide()
     {
         switch (inputConfig.shoulderSide)
         {

@@ -16,11 +16,11 @@ MonoBehaviour:
   keyboardX: 0
   lerpedKeyboardY: 0
   lerpedkeyboardX: 0
-  shoulderSide: 0
+  shoulderSide: 1
   takeInputs: 1
-  yaw: 30.90001
-  lerpedYaw: 30.737608
-  pitch: -34.399994
+  yaw: 0
+  lerpedYaw: 0
+  pitch: 0
   mouseSensitivity: 2
   aimDamping: 8
   cameraFarsight: 50

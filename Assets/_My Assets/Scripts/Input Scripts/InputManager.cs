@@ -1,3 +1,4 @@
+using System.Xml;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
@@ -10,13 +11,14 @@ public class InputManager : MonoBehaviour
         inputConfig.keyboardX = 0;
         inputConfig.lerpedKeyboardY = 0;
         inputConfig.lerpedkeyboardX = 0;
+        inputConfig.isMoving = false;
 
         inputConfig.yaw = 0;
         inputConfig. lerpedYaw = 0;
         inputConfig.pitch = 0;
+
         inputConfig.shoulderSide = ShoulderSide.Right;
     }
-
 
     private void Update()
     {
@@ -30,6 +32,9 @@ public class InputManager : MonoBehaviour
         inputConfig.lerpedKeyboardY = Mathf.MoveTowards(inputConfig.lerpedKeyboardY, inputConfig.keyboardY, 4 * Time.deltaTime);
         inputConfig.keyboardX = Input.GetAxisRaw("Horizontal");
         inputConfig.lerpedkeyboardX = Mathf.MoveTowards(inputConfig.lerpedkeyboardX, inputConfig.keyboardX, 4 * Time.deltaTime);
+
+        if (inputConfig.keyboardY != 0 || inputConfig.keyboardX != 0) inputConfig.isMoving = false;
+        else inputConfig.isMoving = true;
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {

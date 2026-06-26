@@ -6,6 +6,7 @@ public class InputConfig : ScriptableObject
     [Header ("Player movement")]
     public float keyboardY;
     public float keyboardX;
+    public bool isMoving = false;
 
     [Space]
     public float lerpedKeyboardY;
