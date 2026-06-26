@@ -24,7 +24,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         PlayerActions.TriggerPressed += OnTriggerPressed;
     }
-
+    
     private void OnDisable()
     {
         PlayerActions.TriggerPressed -= OnTriggerPressed;
@@ -32,23 +32,30 @@ public class PlayerMovementController : MonoBehaviour
 
     public void MovePlayer()
     {
+        UpdatePlayerSpeed();
+
         float yVelocity = 0;
         Vector3 movementVector = (transform.forward * inputConfig.keyboardY) + (transform.right * inputConfig.keyboardX);
         movementVector = movementVector.normalized;
         yVelocity = rb.linearVelocity.y;
         rb.linearVelocity = movementVector * playerSpeed + transform.up * yVelocity;
 
-        Debug.DrawRay(transform.position, transform.forward * 3, Color.blue);
-        Debug.DrawRay(transform.position, movementVector * 3, Color.red);
+        //Debug.DrawRay(transform.position, transform.forward * 3, Color.blue);
+        //Debug.DrawRay(transform.position, movementVector * 3, Color.red);
+        //Debug.Log($"Forward: {transform.forward}, Movement: {movementVector}");
+    }
 
-        Debug.Log($"Forward: {transform.forward}, Movement: {movementVector}");
+    public void UpdatePlayerSpeed()
+    {
+        if (inputConfig.isAiming) playerSpeed = playerConfig.playerAimSpeed;
+        else playerSpeed = playerConfig.playerNormalSpeed;
     }
 
     float lastFootstep = 0;
     public void CheckForFootSteps()
     {
         float footstep = playerAnimator.GetFloat("Footstep");
-        if (lastFootstep > 0.5f && footstep < 0.5f || lastFootstep < 0.5f && footstep > 0.5f)
+        if (lastFootstep > 1f && footstep < 1|| lastFootstep < 1 && footstep > 1)
         {
             Debug.Log("Play footstep sound");
             SfxActions.PlayerSfx?.Invoke(SfxType.FOOTSETPS);

@@ -14,13 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InputConfig
   keyboardY: 0
   keyboardX: 0
+  isMoving: 0
   lerpedKeyboardY: 0
   lerpedkeyboardX: 0
+  isAiming: 0
   shoulderSide: 1
   takeInputs: 1
-  yaw: 0
-  lerpedYaw: 0
-  pitch: 0
+  yaw: 31.49999
+  lerpedYaw: 31.61741
+  pitch: -33.100002
+  canShoot: 0
   mouseSensitivity: 2
   aimDamping: 8
   cameraFarsight: 50

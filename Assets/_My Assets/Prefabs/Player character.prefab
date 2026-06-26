@@ -4858,7 +4858,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 70
   orthographic: 0
   orthographic size: 1.16
   m_Depth: -1
@@ -5056,7 +5056,7 @@ GameObject:
   - component: {fileID: 5828621437601780408}
   - component: {fileID: 8208193623895278068}
   m_Layer: 0
-  m_Name: Rig 1
+  m_Name: Aim rig control
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5330,13 +5330,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458240e9d96d1ae40b1cc370c52fe314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  cameraConfig: {fileID: 11400000, guid: 8cedf6106ff5b464d8efc8cd5b30e469, type: 2}
   inputConfig: {fileID: 11400000, guid: 900002b069f04b341a197becd149ca14, type: 2}
   characterModel: {fileID: 3582419551777622893}
+  mainCamera: {fileID: 6851582679435517070}
   tppCamera: {fileID: 8917126199180669352}
   cameraYaw: {fileID: 1726675139848710663}
   cameraPitch: {fileID: 6349507873594383571}
   aimComponent: {fileID: 566048314610405417}
   recoilComponent: {fileID: 5000687309118915005}
+  aimRig: {fileID: 8208193623895278068}
   rightSight: {fileID: 6262491318889600707}
   rightConstraint: {fileID: 8201917430559158290}
   leftSight: {fileID: 3670843567645879189}
@@ -5380,7 +5383,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!136 &7278203055769477364

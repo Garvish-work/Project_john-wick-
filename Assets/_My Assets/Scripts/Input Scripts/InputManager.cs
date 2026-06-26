@@ -29,20 +29,32 @@ public class InputManager : MonoBehaviour
     private void KeyboardInputs()
     {
         inputConfig.keyboardY = Input.GetAxisRaw("Vertical");
-        inputConfig.lerpedKeyboardY = Mathf.MoveTowards(inputConfig.lerpedKeyboardY, inputConfig.keyboardY, 4 * Time.deltaTime);
+        inputConfig.lerpedKeyboardY = Mathf.MoveTowards(inputConfig.lerpedKeyboardY, inputConfig.keyboardY, 5 * Time.deltaTime);
         inputConfig.keyboardX = Input.GetAxisRaw("Horizontal");
-        inputConfig.lerpedkeyboardX = Mathf.MoveTowards(inputConfig.lerpedkeyboardX, inputConfig.keyboardX, 4 * Time.deltaTime);
+        inputConfig.lerpedkeyboardX = Mathf.MoveTowards(inputConfig.lerpedkeyboardX, inputConfig.keyboardX, 5 * Time.deltaTime);
 
-        if (inputConfig.keyboardY != 0 || inputConfig.keyboardX != 0) inputConfig.isMoving = false;
-        else inputConfig.isMoving = true;
+        if (inputConfig.keyboardY != 0 || inputConfig.keyboardX != 0) inputConfig.isMoving = true;
+        else inputConfig.isMoving = false;
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (inputConfig.canShoot)
         {
-            PlayerActions.TriggerPressed(true);
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                PlayerActions.TriggerPressed(true);
+            }
+            else if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                PlayerActions.TriggerPressed(false);
+            }
         }
-        else if (Input.GetKeyUp(KeyCode.Mouse0))
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            PlayerActions.TriggerPressed(false);
+            inputConfig.isAiming = true;
+        }
+        else if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            inputConfig.isAiming = false;
         }
     }
 

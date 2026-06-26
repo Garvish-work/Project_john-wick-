@@ -13,6 +13,7 @@ public class InputConfig : ScriptableObject
     public float lerpedkeyboardX;
 
     [Header("Camera control")]
+    public bool isAiming = false;
     public ShoulderSide shoulderSide;
     public bool takeInputs;
     public float yaw;
@@ -20,6 +21,7 @@ public class InputConfig : ScriptableObject
     public float pitch;
 
     [Space]
+    public bool canShoot = false;
     public float mouseSensitivity = 2;
     public float aimDamping = 8;
     public float cameraFarsight = 50f; 

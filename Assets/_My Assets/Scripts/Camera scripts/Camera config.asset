@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dab8b6361cab5774ea917e567832fc29, type: 3}
-  m_Name: Player config
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerConfig
-  isAiming: 0
-  isHoldingTrigger: 0
-  playerAimSpeed: 2.7
-  playerNormalSpeed: 3.7
+  m_Script: {fileID: 11500000, guid: 299d97d65a78fd944889da0f6d1f04cf, type: 3}
+  m_Name: Camera config
+  m_EditorClassIdentifier: Assembly-CSharp::CameraConfig
+  normalCameraFov: 70
+  aimcameraFov: 50

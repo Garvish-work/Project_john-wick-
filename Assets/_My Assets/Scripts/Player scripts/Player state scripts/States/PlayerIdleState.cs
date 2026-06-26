@@ -9,6 +9,8 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void Enter()
     {
+        inputConfig.canShoot = false;
+        playerAnimationController.ChangPlayerAimState(false);
         base.Enter();
     }
 
@@ -19,11 +21,37 @@ public class PlayerIdleState : PlayerBaseState
         playerMovementController.MovePlayer();
 
         cameraController.CameraHandling();
-        cameraController.UpdateShoulderSide();  
+        cameraController.UpdateShoulderSide();
         if (inputConfig.isMoving)
         {
-            nextState = new PlayerAimWalkState(inputConfig, playerMovementController, playerAnimationController, cameraController);
-            Exit();
+            if (inputConfig.isAiming)
+            {
+                nextState = new PlayerAimWalkState(inputConfig, playerMovementController, playerAnimationController, cameraController);
+                Exit();
+                return;
+            }
+            else
+            {
+                nextState = new PlayerWalkState (inputConfig, playerMovementController, playerAnimationController, cameraController);
+                Exit();
+                return;
+            }
+        }
+
+        if (inputConfig.isAiming)
+        {
+            if (inputConfig.isMoving)
+            {
+                nextState = new PlayerAimWalkState(inputConfig, playerMovementController, playerAnimationController, cameraController);
+                Exit();
+                return;
+            }
+            else
+            {
+                nextState = new PlayerAimIdleState(inputConfig, playerMovementController, playerAnimationController, cameraController);
+                Exit();
+                return;
+            }
         }
     }
 

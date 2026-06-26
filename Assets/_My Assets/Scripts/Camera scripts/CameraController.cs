@@ -4,12 +4,14 @@ using UnityEngine.Animations.Rigging;
 
 public class CameraController: MonoBehaviour
 {
+    [SerializeField] private CameraConfig cameraConfig;
     [SerializeField] private InputConfig inputConfig;
 
     [Space]
     [SerializeField] private Transform characterModel;
 
     [Space]
+    [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform tppCamera;
     [SerializeField] private Transform cameraYaw;
     [SerializeField] private Transform cameraPitch;
@@ -17,6 +19,7 @@ public class CameraController: MonoBehaviour
     [Space]
     [SerializeField] private Transform aimComponent;
     [SerializeField] private Transform recoilComponent;
+    [SerializeField] private Rig aimRig;
 
     [Header("Change cover system")]
     [SerializeField] private Transform rightSight;
@@ -36,7 +39,11 @@ public class CameraController: MonoBehaviour
     private void Update()
     {
         SetAim();
+        UpdateCameraFov();
     }
+
+    float targetFov = 0;
+    private void UpdateCameraFov() => mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, targetFov, cameraConfig.fovChangeSpeed * Time.deltaTime);
 
     public void CameraHandling()
     {
@@ -47,6 +54,17 @@ public class CameraController: MonoBehaviour
 
     private void SetAim()
     {
+        if (inputConfig.canShoot)
+        {
+            aimRig.weight = 1;
+            targetFov = cameraConfig.aimcameraFov;
+        }
+        else
+        { 
+            aimRig.weight = 0;
+            targetFov = cameraConfig.normalCameraFov;
+        }
+
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
         Vector3 endPoint;
