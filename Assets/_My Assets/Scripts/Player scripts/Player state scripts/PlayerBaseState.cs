@@ -29,6 +29,7 @@ public class PlayerBaseState
 
     public virtual void Enter() { eventState = EventState.UPDATE; }
     public virtual void Update() { eventState = EventState.UPDATE; }
+    public virtual void FixedUpdate() { }
     public virtual void Exit()
     {
         eventState = EventState.EXIT;
@@ -44,5 +45,10 @@ public class PlayerBaseState
             return nextState;
         }
         else return this;
+    }
+
+    public void FixedProcess()
+    {
+        FixedUpdate();
     }
 }

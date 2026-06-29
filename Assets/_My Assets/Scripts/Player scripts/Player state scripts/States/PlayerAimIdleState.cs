@@ -14,15 +14,19 @@ public class PlayerAimIdleState : PlayerBaseState
         base.Enter();
     }
 
+    public override void FixedUpdate()
+    {
+        playerMovementController.MovePlayer();
+        cameraController.CameraHandling();
+        cameraController.UpdateShoulderSide();
+    }
+
     public override void Update()
     {
         playerAnimationController.UpdateAnimation();
 
-        playerMovementController.MovePlayer();
         playerMovementController.CheckForFootSteps();
 
-        cameraController.CameraHandling();
-        cameraController.UpdateShoulderSide();
 
         if (inputConfig.isMoving)
         {

@@ -2,13 +2,21 @@ using UnityEngine;
 
 public class WeaponHandgun : BaseWeapon
 {
+    [SerializeField] private Transform mainHolder;
     [SerializeField] private PlayerConfig playerConfig;
     [SerializeField] private Animator weaponAnimator;
     [SerializeField] private ParticleSystem[] weaponFx;
     [SerializeField] private ParticleSystem impackFx;
+    [SerializeField] private ParticleSystem bloodFx;
+    [SerializeField] private float damageGiven = 15;
 
-    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private LayerMask levelLayerMask;
     [SerializeField] private Camera cam;
+
+    private void Awake()
+    {
+        mainHolder = transform.parent;  
+    }
 
     public override void Shoot()
     {
@@ -20,11 +28,21 @@ public class WeaponHandgun : BaseWeapon
             fx.Play();
         }
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-        if (Physics.Raycast(ray, out RaycastHit hit, 100, layerMask))
+        if (Physics.Raycast(ray, out RaycastHit hit, 100))
         {
-            if (hit.collider.TryGetComponent(out ICollectables c)) c.Collect();
-            impackFx.transform.position = hit.point;
-            impackFx.Play(true);
+            if (hit.collider.TryGetComponent(out IDamagable damagableObject))
+            {
+                damagableObject.Damage(damageGiven);
+                bloodFx.transform.position = hit.point;
+                bloodFx.Play(true);
+            }
+            else if (hit.collider.TryGetComponent(out ICollectables collectable)) collectable.Collect();
+
+            if (hit.collider.gameObject.layer == 6)
+            {
+                impackFx.transform.position = hit.point;
+                impackFx.Play(true);
+            }
         }
     }
 }

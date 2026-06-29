@@ -14,8 +14,8 @@ public class PlayerMovementController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        Application.targetFrameRate = 60;
-        QualitySettings.vSyncCount = 1;
+        Application.targetFrameRate = -1;
+        QualitySettings.vSyncCount = 0;
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1.2f;
     }

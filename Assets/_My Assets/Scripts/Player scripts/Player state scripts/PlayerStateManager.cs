@@ -24,4 +24,9 @@ public class PlayerStateManager : MonoBehaviour
     {
         playerCurrentState = playerCurrentState.Process();
     }
+
+    private void FixedUpdate()
+    {
+        playerCurrentState.FixedUpdate(); 
+    }
 }
