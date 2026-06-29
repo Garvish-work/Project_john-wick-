@@ -4,7 +4,6 @@ public class EnemyHealthSystem : MonoBehaviour
 {
     [SerializeField] private float health = 100;
     [SerializeField] private Animator enemyAnimator;
-    [SerializeField] private Transform healthBarHolder;
 
     public float GetHealth()
     {
@@ -13,7 +12,8 @@ public class EnemyHealthSystem : MonoBehaviour
 
     public void SetHealth(float _health)
     {
-        health = _health;   
+        health = _health;
+        EnemyActions.EnemyGotHit?.Invoke(health, transform);
     }
         
 }
