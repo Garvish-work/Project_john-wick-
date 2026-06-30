@@ -30,6 +30,11 @@ public class PlayerMovementController : MonoBehaviour
         PlayerActions.TriggerPressed -= OnTriggerPressed;
     }
 
+    public void AbsoluteZeroMovement()
+    {
+        rb.linearVelocity = Vector3.zero;
+    }
+
     public void MovePlayer()
     {
         UpdatePlayerSpeed();

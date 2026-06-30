@@ -26,6 +26,14 @@ public class PlayerAimWalkState : PlayerBaseState
         playerAnimationController.UpdateAnimation();
         playerMovementController.CheckForFootSteps();
 
+        if (inputConfig.isKicking)
+        {
+            inputConfig.canShoot = false;
+            nextState = new PlayerKickingState(inputConfig, playerMovementController, playerAnimationController, cameraController);
+            Exit();
+            return;
+        }
+
         if (!inputConfig.isMoving)
         {
             if (inputConfig.isAiming)

@@ -8,7 +8,6 @@ public class EnemyBodyPartSystem : MonoBehaviour, IDamagable
     [SerializeField] private BodyPart bodyPart;
 
     [Space]
-    [SerializeField] private string dealthType;
     [SerializeField] private float damageMultiplier = 1;
 
     private void Awake()
@@ -18,6 +17,8 @@ public class EnemyBodyPartSystem : MonoBehaviour, IDamagable
 
     public void Damage(float damageTaken)
     {
+        ScoreActions.EnemyGotHit?.Invoke(bodyPart);
+
         float health = healthSystem.GetHealth();
         health = Mathf.Max(0, health -= (damageTaken * damageMultiplier));
 
@@ -29,6 +30,7 @@ public class EnemyBodyPartSystem : MonoBehaviour, IDamagable
 
     public void Death()
     {
+        ScoreActions.EnemyDied?.Invoke();
         enemyAnimatior.enabled = false;
         bone.AddForce(healthSystem.GetPlayerTransform().transform.forward * 25 , ForceMode.Impulse);
     }

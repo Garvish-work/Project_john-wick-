@@ -25,6 +25,13 @@ public class PlayerWalkState : PlayerBaseState
     {
         playerAnimationController.UpdateAnimation();
 
+        if (inputConfig.isKicking)
+        {
+            nextState = new PlayerKickingState(inputConfig, playerMovementController, playerAnimationController, cameraController);
+            Exit();
+            return;
+        }
+
         if (inputConfig.isSprinting)
         {
             nextState = new PlayerSprintingState(inputConfig, playerMovementController, playerAnimationController, cameraController);

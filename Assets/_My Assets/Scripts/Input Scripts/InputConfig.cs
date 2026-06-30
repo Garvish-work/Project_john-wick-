@@ -10,6 +10,10 @@ public class InputConfig : ScriptableObject
     public bool isSprinting = false;
 
     [Space]
+    public bool isKicking = false;
+    public float kickTimer = 2;
+
+    [Space]
     public float lerpedKeyboardY;
     public float lerpedkeyboardX;
 

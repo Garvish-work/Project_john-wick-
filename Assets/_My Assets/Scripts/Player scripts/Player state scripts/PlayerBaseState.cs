@@ -16,6 +16,7 @@ public class PlayerBaseState
     protected PlayerAnimationController playerAnimationController;
 
     protected PlayerBaseState nextState;
+    protected PlayerBaseState lastState;
 
     public PlayerBaseState(InputConfig _inputConfig, PlayerMovementController _playerMovementController, PlayerAnimationController _playerAnimationController, CameraController _cameraController)
     {

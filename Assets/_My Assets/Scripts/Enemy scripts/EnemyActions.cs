@@ -3,5 +3,5 @@ using UnityEngine;
 
 public static class EnemyActions 
 {
-    public static Action<float, Transform> EnemyGotHit;
+    public static Action<float, float, Transform> EnemyGotHit;
 }

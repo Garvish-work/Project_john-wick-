@@ -24,9 +24,15 @@ public class PlayerAimIdleState : PlayerBaseState
     public override void Update()
     {
         playerAnimationController.UpdateAnimation();
-
         playerMovementController.CheckForFootSteps();
 
+        if (inputConfig.isKicking)
+        {
+            inputConfig.canShoot = false;
+            nextState = new PlayerKickingState(inputConfig, playerMovementController, playerAnimationController, cameraController);
+            Exit();
+            return;
+        }
 
         if (inputConfig.isMoving)
         {

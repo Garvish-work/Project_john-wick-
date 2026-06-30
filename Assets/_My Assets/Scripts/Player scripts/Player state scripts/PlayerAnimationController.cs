@@ -21,4 +21,9 @@ public class PlayerAnimationController : MonoBehaviour
     {
         playerAnimator.SetBool("isSprinting", check);
     }
+
+    public void PlayerKick()
+    {
+        playerAnimator.SetTrigger("Kick");
+    }
 }

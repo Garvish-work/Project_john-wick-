@@ -15,14 +15,17 @@ MonoBehaviour:
   keyboardY: 0
   keyboardX: 0
   isMoving: 0
+  isSprinting: 0
+  isKicking: 0
+  kickTimer: 1.3
   lerpedKeyboardY: 0
   lerpedkeyboardX: 0
   isAiming: 0
-  shoulderSide: 1
+  shoulderSide: 0
   takeInputs: 1
-  yaw: 31.49999
-  lerpedYaw: 31.61741
-  pitch: -33.100002
+  yaw: 20.850132
+  lerpedYaw: 21.033136
+  pitch: -42.399826
   canShoot: 0
   mouseSensitivity: 2
   aimDamping: 8

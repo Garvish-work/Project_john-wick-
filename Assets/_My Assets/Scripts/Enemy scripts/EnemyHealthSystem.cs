@@ -2,13 +2,20 @@ using UnityEngine;
 
 public class EnemyHealthSystem : MonoBehaviour
 {
+    EnemyMovmentSystem enemyMovmentSystem;
+
     [SerializeField] private float health = 100;
+    [SerializeField] private float maxHealth = 100;
     [SerializeField] private Transform mainPlayer;
     [SerializeField] private Animator enemyAnimator;
     [SerializeField] private Rigidbody[] chracterBones;
 
+    bool isDead = false;
+
     private void Awake()
     {
+        health = maxHealth;
+        enemyMovmentSystem = GetComponent<EnemyMovmentSystem>();    
         SetRagdoll(false);
     }
 
@@ -20,9 +27,14 @@ public class EnemyHealthSystem : MonoBehaviour
     public void SetHealth(float _health)
     {
         health = _health;
-        EnemyActions.EnemyGotHit?.Invoke(health, transform);
+        EnemyActions.EnemyGotHit?.Invoke(health, maxHealth, transform);
 
-        if (_health <= 0) SetRagdoll(true);
+        if (_health <= 0)
+        {
+            isDead = true;
+            enemyMovmentSystem.SetMovmentOff();
+            SetRagdoll(true);
+        }
     }
 
     public Transform GetPlayerTransform()
@@ -52,3 +64,4 @@ public class EnemyHealthSystem : MonoBehaviour
         }
     }
 }
+

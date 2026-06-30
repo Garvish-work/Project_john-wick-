@@ -1,5 +1,5 @@
-using System.Xml;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InputManager : MonoBehaviour
 {
@@ -24,6 +24,8 @@ public class InputManager : MonoBehaviour
     {
         if (inputConfig.takeInputs) MouseInputs();
         KeyboardInputs();
+
+        RestartScene();
     }
 
     private void KeyboardInputs()
@@ -62,8 +64,15 @@ public class InputManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
+                if (inputConfig.isKicking) return;
                 inputConfig.isAiming = !inputConfig.isAiming;
             }
+        }
+
+        if (Input.GetKeyDown (KeyCode.F))
+        {
+            if (inputConfig.isSprinting) return;
+            inputConfig.isKicking = true;
         }
     }
 
@@ -77,6 +86,14 @@ public class InputManager : MonoBehaviour
         {
             if (inputConfig.shoulderSide == ShoulderSide.Left) inputConfig.shoulderSide = ShoulderSide.Right;
             else inputConfig.shoulderSide = ShoulderSide.Left;
+        }
+    }
+
+    private void RestartScene()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
         }
     }
 }

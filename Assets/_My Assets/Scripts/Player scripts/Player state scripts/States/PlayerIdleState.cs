@@ -25,6 +25,13 @@ public class PlayerIdleState : PlayerBaseState
     {
         playerAnimationController.UpdateAnimation();
 
+        if (inputConfig.isKicking)
+        {
+            nextState = new PlayerKickingState(inputConfig, playerMovementController, playerAnimationController, cameraController);
+            Exit();
+            return;
+        }
+
         if (inputConfig.isMoving)
         {
             if (inputConfig.isAiming)
