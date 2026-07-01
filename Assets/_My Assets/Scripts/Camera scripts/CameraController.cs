@@ -42,6 +42,11 @@ public class CameraController: MonoBehaviour
         UpdateCameraFov();
     }
 
+    private void FixedUpdate()
+    {
+        ResetRecoilComponent();
+    }
+
     float targetFov = 0;
     private void UpdateCameraFov() => mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, targetFov, cameraConfig.fovChangeSpeed * Time.deltaTime);
 
@@ -74,21 +79,18 @@ public class CameraController: MonoBehaviour
     }
 
     bool recoilComponemtReset = true;
+    float recoilRotation = 0;
     private void OnWeaponShot()
     {
         recoilComponent.localPosition = inputConfig.recoilOffset;
-        if (recoilComponemtReset) StartCoroutine(ResetRecoilComponent());   
+        recoilRotation = inputConfig.recoilRotationOffset;
     }
 
-    private IEnumerator ResetRecoilComponent()
+    private void ResetRecoilComponent()
     {
-        recoilComponemtReset = false;
-        while (recoilComponent.localPosition != Vector3.zero)
-        {
-            recoilComponent.localPosition = Vector3.MoveTowards(recoilComponent.localPosition, Vector3.zero, .5f * Time.deltaTime);
-            yield return null;
-            recoilComponemtReset = true;
-        }
+        recoilComponent.localPosition = Vector3.MoveTowards(recoilComponent.localPosition, Vector3.zero, 1.3f * Time.deltaTime);
+        recoilRotation = Mathf.MoveTowards(recoilRotation, 0, 1.3f * Time.deltaTime);
+        recoilComponent.localRotation = Quaternion.Euler(recoilRotation, 0, 0);
     }
 
     public void UpdateShoulderSide()

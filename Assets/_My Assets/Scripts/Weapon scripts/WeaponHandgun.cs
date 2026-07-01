@@ -24,7 +24,6 @@ public class WeaponHandgun : BaseWeapon
         SfxActions.PlayerSfx?.Invoke(SfxType.PISTOL_GUNSHOT);
         foreach (ParticleSystem fx in weaponFx)
         {
-            WeaponActions.WeaponShot?.Invoke();
             fx.Play();
         }
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
@@ -44,6 +43,7 @@ public class WeaponHandgun : BaseWeapon
                 impackFx.Play(true);
             }
         }
+        WeaponActions.WeaponShot?.Invoke();
     }
 }
 

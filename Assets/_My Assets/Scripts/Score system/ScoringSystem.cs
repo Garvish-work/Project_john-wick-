@@ -5,6 +5,7 @@ public class ScoringSystem : MonoBehaviour
 {
     [SerializeField] private ScoreConfig scoreConfig;
     [SerializeField] private TMP_Text scoreCountText;
+    [SerializeField] private TMP_Text enemiesRemeiningText;
 
     private void OnEnable()
     {
@@ -22,6 +23,11 @@ public class ScoringSystem : MonoBehaviour
     {
         scoreConfig.currentScore = 0;
         UpdateScoreUi();
+    }
+
+    private void Start()
+    {
+        UpdateRemainingUi();
     }
 
     private void UpdateScoreUi()
@@ -53,5 +59,12 @@ public class ScoringSystem : MonoBehaviour
     {
         scoreConfig.currentScore += scoreConfig.deathScore;
         UpdateScoreUi();
+        scoreConfig.zombieRemaining--;
+        UpdateRemainingUi();
+    }
+
+    private void UpdateRemainingUi()
+    {
+        enemiesRemeiningText.text = "Remaining:"+scoreConfig.zombieRemaining.ToString("000");
     }
 }

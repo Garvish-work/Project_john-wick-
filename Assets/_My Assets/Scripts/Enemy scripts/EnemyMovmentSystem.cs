@@ -4,14 +4,35 @@ using System.Collections;
 
 public class EnemyMovmentSystem : MonoBehaviour
 {
+    GameManager gameManager;
+
     [SerializeField] private Animator enemyAnimator;
     [SerializeField] private Transform target;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] private ZombieType zombieType;
+    CharacterJoint joint;
 
     bool isDead = false;
 
     private void Awake()
+    {
+        gameManager = GameManager.instance;
+        target = gameManager.GetMainPlayer();
+    }
+
+    private void OnEnable()
+    {
+        isDead = false;
+        agent.enabled = true;
+        ZombieSetup();
+    }
+
+    private void OnDisable()
+    {
+        enemyAnimator.enabled = true;  
+    }
+
+    private void ZombieSetup()
     {
         StartCoroutine(nameof(Movement));
 
@@ -42,10 +63,12 @@ public class EnemyMovmentSystem : MonoBehaviour
 
     private IEnumerator Movement()
     {
+        WaitForSeconds wait = new WaitForSeconds(.8f);
+
         while (!isDead)
         {
-            agent.SetDestination(target.position);  
-            yield return null;
+            agent.SetDestination(target.position);
+            yield return wait;
         }
     }
 

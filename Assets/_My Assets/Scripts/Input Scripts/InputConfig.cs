@@ -31,6 +31,7 @@ public class InputConfig : ScriptableObject
     public float aimDamping = 8;
     public float cameraFarsight = 50f; 
     public Vector3 recoilOffset = new Vector3(0,0,0.3f);
+    public float recoilRotationOffset = 2;
 }
 
 public enum ShoulderSide

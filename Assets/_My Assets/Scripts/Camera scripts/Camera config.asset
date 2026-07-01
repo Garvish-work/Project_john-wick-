@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299d97d65a78fd944889da0f6d1f04cf, type: 3}
   m_Name: Camera config
   m_EditorClassIdentifier: Assembly-CSharp::CameraConfig
-  normalCameraFov: 60
-  aimcameraFov: 50
+  normalCameraFov: 50
+  aimcameraFov: 40
   fovChangeSpeed: 5

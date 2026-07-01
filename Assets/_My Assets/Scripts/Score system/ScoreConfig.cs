@@ -5,6 +5,7 @@ public class ScoreConfig : ScriptableObject
 {
     public int currentScore = 0;
     public int highscore = 0;
+    public int zombieRemaining = 0;
 
     [Space]
     public int deathScore = 1000;

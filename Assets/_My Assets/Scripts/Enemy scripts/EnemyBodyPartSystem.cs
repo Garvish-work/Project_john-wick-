@@ -9,7 +9,6 @@ public class EnemyBodyPartSystem : MonoBehaviour, IDamagable
 
     [Space]
     [SerializeField] private float damageMultiplier = 1;
-
     private void Awake()
     {
         bone = GetComponent<Rigidbody>();   
@@ -30,7 +29,6 @@ public class EnemyBodyPartSystem : MonoBehaviour, IDamagable
 
     public void Death()
     {
-        ScoreActions.EnemyDied?.Invoke();
         enemyAnimatior.enabled = false;
         bone.AddForce(healthSystem.GetPlayerTransform().transform.forward * 25 , ForceMode.Impulse);
     }

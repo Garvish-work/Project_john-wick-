@@ -23,11 +23,12 @@ MonoBehaviour:
   isAiming: 0
   shoulderSide: 0
   takeInputs: 1
-  yaw: 20.850132
-  lerpedYaw: 21.033136
-  pitch: -42.399826
+  yaw: 138.40016
+  lerpedYaw: 138.15785
+  pitch: -21.649954
   canShoot: 0
   mouseSensitivity: 2
   aimDamping: 8
   cameraFarsight: 50
   recoilOffset: {x: 0, y: 0, z: 0.3}
+  recoilRotationOffset: -2
